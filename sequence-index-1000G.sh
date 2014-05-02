@@ -275,7 +275,12 @@ do
       write_data_to_align_file 'paired' "$SAMPLE" "$CENTRE" "$TECH" "$READ_GROUP" "$LIBRARY" "$LANE" "$NO_PAIRED_READS" "$FASTQ" "$FASTQ2"
       if [[ $MERGE == 'True' ]]
       then
-	NO_LINES=`wc -l $SAMPLE.1000G.bam.list | cut -d " " -f 1`
+        if [ ! -f $SAMPLE.1000G.bam.list ]
+        then
+          NO_LINES=0
+        else
+	  NO_LINES=`wc -l $SAMPLE.1000G.bam.list | cut -d " " -f 1`
+        fi
 
         # Write the name of the aligned BAM files to the bam list.
         # First define the file name.
