@@ -175,16 +175,16 @@ then
 fi
 
 # Check if merge is set to 'true' or 'false'.
-if [[ $MERGE != 'True' ]] && [[ $MERGE != 'False' ]]
+if [[ $MERGE != 'true' ]] && [[ $MERGE != 'false' ]]
 then
   echo -e "Usage: 1000G_script.sh <analysis type> <sequence index file> <merge samples>" 1>&2
-  echo -e "\tThe merge samples option must be set to 'True' or 'False'" 1>&2
+  echo -e "\tThe merge samples option must be set to 'true' or 'false'" 1>&2
   echo -e "\tCurrent value is: $MERGE" 1>&2
   exit 1
 fi
 
 # Check that no files of the form *.bam.list exist.
-if [[ $MERGE == 'True' ]]
+if [[ $MERGE == 'true' ]]
 then
   ls *.1000G.bam.list > /dev/null 2> /dev/null
   if [[ $? == 0 ]]
@@ -245,7 +245,7 @@ do
   if [[ $LIBRARY_TYPE == 'SINGLE' ]] && [[ $TYPE != 'p' ]]
   then
     write_data_to_align_file 'single' "$SAMPLE" "$CENTRE" "$TECH" "$READ_GROUP" "$LIBRARY" "$LANE" "$NO_SINGLE_READS" "$FASTQ"
-    if [[ $MERGE == 'True' ]]
+    if [[ $MERGE == 'true' ]]
     then
       NO_LINES=`wc -l $SAMPLE.1000G.bam.list | cut -d " " -f 1`
 
@@ -273,7 +273,7 @@ do
     if [[ $WHICH_READ == *_1 ]]
     then
       write_data_to_align_file 'paired' "$SAMPLE" "$CENTRE" "$TECH" "$READ_GROUP" "$LIBRARY" "$LANE" "$NO_PAIRED_READS" "$FASTQ" "$FASTQ2"
-      if [[ $MERGE == 'True' ]]
+      if [[ $MERGE == 'true' ]]
       then
         if [ ! -f $SAMPLE.1000G.bam.list ]
         then
@@ -308,7 +308,7 @@ done | sort | uniq > temp_samples.txt
 
 SAMPLE_ID=1
 NO_SAMPLES=`wc -l temp_samples.txt | cut -d ' ' -f 1`
-if [[ $MERGE == "True" ]]
+if [[ $MERGE == "true" ]]
 then
   write_initial_merge_file
   while read sample
