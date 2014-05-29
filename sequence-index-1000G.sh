@@ -67,12 +67,12 @@ write_data_to_align_file()
     echo -e "      \"$FASTQ_DIR/$fastq2\"," >> $filename
   fi
   echo -e "      \"$output\"," >> $filename
-  echo -e "      \"\\\"$sample\\\"\"," >> $filename
-  echo -e "      \"\\\"$centre\\\"\"," >> $filename
-  echo -e "      \"\\\"$sequencing_technology\\\"\"," >> $filename
-  echo -e "      \"\\\"$read_group\\\"\"," >> $filename
-  echo -e "      \"\\\"$library\\\"\"," >> $filename
-  echo -e "      \"\\\"$lane\\\"\"" >> $filename
+  echo -e "      \"$sample\"," >> $filename
+  echo -e "      \"$centre\"," >> $filename
+  echo -e "      \"$sequencing_technology\"," >> $filename
+  echo -e "      \"$read_group\"," >> $filename
+  echo -e "      \"$library\"," >> $filename
+  echo -e "      \"$lane\"" >> $filename
   echo -e "    ]\c" >> $filename
 }
 
