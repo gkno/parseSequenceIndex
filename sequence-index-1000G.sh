@@ -92,7 +92,7 @@ write_initial_merge_file()
 
   echo '{' > $filename
   echo '  "arguments" : [' >> $filename
-  echo '    "--bam-list",' >> $filename
+  echo '    "--in",' >> $filename
   echo '    "--out"' >> $filename
   echo '  ],' >> $filename
   echo '  "values" : [' >> $filename
